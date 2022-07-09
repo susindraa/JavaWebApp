@@ -38,6 +38,11 @@ jobs:
       with:
         name: Artifact-Upload
         path: target
+        
+    - name: Deploy to Tomcat
+      run: curl -v -u deployer:deployer -T ${{ github.workspace }}/target/*.war "http://52.32.30.38:8080/manager/text/deploy?path=/saran_test"
+        
+    
 
     #- name: Publish to GitHub Packages Apache Maven
     #  run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
